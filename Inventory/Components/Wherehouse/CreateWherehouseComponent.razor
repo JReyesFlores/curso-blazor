@@ -1,0 +1,37 @@
+﻿@using Entidades
+@using Business
+@inject NavigationManager navManager
+
+<EditForm Model="oWherehouse">
+    <div class="form-group">
+        <label>Referencia:</label>
+        <InputText @bind-Value="oWherehouse.WherehouseId" class="form-control" readonly></InputText>
+    </div>
+
+    <div class="form-group">
+        <label>Nombre:</label>
+        <InputText @bind-Value="oWherehouse.WherehouseName" class="form-control"></InputText>
+    </div>
+
+    <div class="form-group">
+        <label>Direccion:</label>
+        <InputText @bind-Value="oWherehouse.WherehouseAddress" class="form-control"></InputText>
+    </div>
+
+    <input type="button" value="Guardar" @onclick="SaveWherehouse" class="btn btn-outline-success"/>
+</EditForm>
+
+@code {
+    WherehouseEntity oWherehouse;
+
+    protected override async Task OnInitializedAsync()
+    {
+        oWherehouse = new WherehouseEntity();
+    }
+
+    protected void SaveWherehouse()
+    {
+        B_Wherehouse.CreateWherehouse(oWherehouse);
+        navManager.NavigateTo("/wherehourse/list");
+    }
+}

@@ -1,0 +1,13 @@
+﻿@page "/wherehouse/update/{wherehouseId}"
+
+<UpdateWherehouseComponent wherehouseId="@wherehouseId"></UpdateWherehouseComponent>
+
+@code {
+    [Parameter]
+    public string wherehouseId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        wherehouseId = wherehouseId;
+    }
+}

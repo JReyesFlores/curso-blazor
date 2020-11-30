@@ -1,0 +1,31 @@
+﻿@*
+    @bind-value:event => Se utiliza para actualizar el valor dentro del @code
+
+*@
+
+<input type="text" name="txtejemplo" @bind-value="@message" @bind-value:event="oninput" placeholder="Complete..." />
+<div>
+    @message
+</div>
+
+<input type="text" name="txtexample" @bind-value="@message" />
+<input type="button" value="Haga click aquí..." @onclick="ChangeText" />
+
+@*    
+    Para definir un parametro solo se debe colocar el atributo "Parameter"
+*@
+@code {
+    [Parameter]
+    public string Message { get; set; }
+
+    string message = "Un contenido";
+    private void ChangeText()
+    {
+        message = "Cambiando por click!!";
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        message = Message;
+    }
+}

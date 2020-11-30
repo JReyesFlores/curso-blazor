@@ -1,0 +1,13 @@
+﻿@page "/category/update/{CategoryId}"
+
+<UpdateCategoryComponent CategoryId="@CategoryId"></UpdateCategoryComponent>
+
+@code  {
+    [Parameter]
+    public string CategoryId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        CategoryId = CategoryId;
+    }
+} 

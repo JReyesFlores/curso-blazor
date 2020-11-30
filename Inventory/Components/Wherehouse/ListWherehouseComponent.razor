@@ -1,0 +1,34 @@
+﻿@using Entidades
+@using Business
+@inject NavigationManager navManagers
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>Referencia</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var wherehouse in ListWherehouse)
+        {
+            <tr>
+                <th>@wherehouse.WherehouseId</th>
+                <th>@wherehouse.WherehouseName</th>
+                <th>@wherehouse.WherehouseAddress</th>
+                <th><a href="wherehouse/update/@wherehouse.WherehouseId" class="btn btn-outline-info">Editar</a></th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    List<WherehouseEntity> ListWherehouse;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ListWherehouse = B_Wherehouse.ListWherehouse();
+    }
+}
